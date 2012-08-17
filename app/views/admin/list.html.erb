@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>Response Sets List</title>
+<%= stylesheet_link_tag "admin" %>
+</head>
+<body>
+<div id="banner">
+<h2>Response Sets List - For Debugging purposes only</h2>
+<p>This is a list of all response sets. Follow the link on each line to view response content. </p>
+</div>
+<div id="content">
+<% if @sets.blank? %>
+	<h3> No Response Set Found </h3>
+<% else %>
+	<table id="box-table-a" width="850px">
+	<tr>
+	<th> Access Code </th>
+	<th> Survey Title </th>
+	<th> Created at </th>
+	<th> Complteted at </th>
+	<th> Response </th>
+	</tr>
+	<% @sets.each do |rs| %>
+	  <tr>
+	  <td><%= rs.access_code %></td>
+	  <td><%= rs.survey.title %>
+	  <td><%= rs.created_at %></td>
+	  <% if rs.completed_at.blank? %>
+		<td> Not Completed </td>
+		<% else %>
+		<td><%= rs.completed_at %></td>
+	  <% end %>
+	  <td><a href="/surveys/<%=rs.survey.access_code%>/<%=rs.access_code%>/take">Response</a></td>
+	  </tr>
+	<% end %>
+	</table>
+<% end %>
+</div>
+</body>
+</html>

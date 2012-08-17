@@ -1,15 +1,23 @@
 # About this project
 This project is a customized version of NUBIC Surveyor (https://github.com/NUBIC/surveyor), which is tailored to the specific requirements of linking a survey system to another management system. The major changes are as follows: 
 
-#1: The program now reads the survey identifier ("access code" / "response set code") as a parameter in the URL. One can set their own response set id as follows: 
+1: The system now reads the survey identifier ("access code" / "response set code") as a parameter in the URL. One can set their own response set id as follows: 
     ^/surveys/?id=(some id)
 	This is useful if one wants the management system to set the survey identifier, and later use it to recognize who the user is from without asking use for any identifying information. 
+	The system can still function using the origional ^/surveys/ path, and will generate a random survey identifier in place of the assigned one. 
 
-#2: The program now has two JSON interfaces for exporting survey status and responses. 
+2: The version now has two JSON interfaces for exporting survey status and responses. 
 	^/survey_admin/to_json/(some id)  -displays survey status for a response set in JSON
     ^/survey_admin/export/(some id)  - to export questions and user responses of a response set in JSON
 	This is done so that if one wants the management system to fetch responses directly from the surveyor server, rather than having to do it under the server's command line. 
-	
+
+3: This version also provides two web interfaces. 
+	^/survey_admin/list  -displays a list of all surveys in the database
+	^/survey_admin/delete/(some id)  -deletes the response set related to the survey identifier
+
+4: This version removes the selection of survey versions from the "new serveys" page. The version selection has proved confusing to users. There is also a changed color scheme.  
+
+5: Two example surveys are located in the "doc" folder: "Longitudinal Followup for Prostate Cancer" and "Brief Fatugue Inventory", in case anyone needs them. 
 	
 # Installation guide for Windows
 0. Install GitHub (http://git-scm.com/downloads); choose "Run git from windows command prompt"

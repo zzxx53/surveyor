@@ -3,6 +3,9 @@ require 'json'
 class AdminController < ApplicationController
   unloadable
   layout 'admin'
+  def list  
+    @sets=ResponseSet.all
+  end
 
   def to_json
 	@rs1=ResponseSet.find_by_access_code(params[:response_set_code])
@@ -57,7 +60,15 @@ class AdminController < ApplicationController
 	  @json1= @output.to_json.html_safe
 	end
   end
-  
+  def delete 
+	@rs1=ResponseSet.find_by_access_code(params[:response_set_code])
+	if @rs1.blank?
+	@output="1"
+	else
+	@rs1.destroy
+	@output="0"
+    end
+  end
 end
 
 class QAPair
