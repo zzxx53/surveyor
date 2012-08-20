@@ -4,13 +4,14 @@
  * custom styles to custom.sass, which will be
  * loaded after the surveyor stylesheets */
 
-$background_color:#EEEEEE
-$surveyor_flash_background_color:#FFF1A8
-$surveyor_color:#FFFFF1
-$surveyor_text_color:#333333
-$surveyor_dependent_color:#FFFFDF
+$background_color:#0f4d92
+$surveyor_flash_background_color:#FCF141
+$surveyor_color:#C1DAD6
+$surveyor_text_color:#000
+$surveyor_dependent_color:#EBEBCC
 $surveyor_menus_active_color:#EBEBCC
 $surveyor_menus_border_color:#ccc
+$surveyor_button_color:#EBEBCC
 
 body
   :background-color $background_color
@@ -102,7 +103,7 @@ body
     input[type="text"], textarea
       :font-size 0.8em
 
-  fieldset.q_hidden, fieldset.g_hidden, fieldset.g_grid tr.q_hidden
+  fieldset.q_hidden, fieldset.g_hidden
     :display none !important
   fieldset.q_dependent, fieldset.g_dependent
     :background-color $surveyor_dependent_color
@@ -127,4 +128,4 @@ body
     :border 1px
     :padding 5px
     :cursor pointer
-    :background-color $background_color
+    :background-color $surveyor_button_color
